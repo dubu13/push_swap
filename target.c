@@ -6,17 +6,52 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:05:51 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/26 22:45:49 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:03:13 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cost(t_stack *a, t_stack *b)
+void	cost_pa(t_stack *a, t_stack *b)
 {
-	
+	t_stack	*temp;
+
+	temp = a;
+	while (a)
+	{
+		a->cost = 0;
+		if (a->index <= stack_size(a) / 2)
+			a->cost += a->index;
+		else
+			a->cost += stack_size(temp) - a->index;
+		if (a->target->index <= stack_size(b) / 2)
+			a->cost += a->target->index;
+		else
+			a->cost += stack_size(b) - a->target->index;
+		a = a->next;
 	}
 }
+
+void	cost_pb(t_stack *a, t_stack *b)
+{
+	t_stack	*temp;
+
+	temp = b;
+	while (b)
+	{
+		b->cost = 0;
+		if (b->index <= stack_size(b) / 2)
+			b->cost += b->index;
+		else
+			b->cost += stack_size(temp) - b->index;
+		if (b->target->index <= stack_size(a) / 2)
+			b->cost += b->target->index;
+		else
+			b->cost += stack_size(a) - b->target->index;
+		b = b->next;
+	}
+}
+
 void	target_for_a(t_stack *a, t_stack *b)
 {
 	int		target_value;

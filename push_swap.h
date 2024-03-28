@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:48:00 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/26 22:49:07 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/28 14:54:30 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_stack
 {
 	long			value;
 	long			index;
+	long			cost;
+	// char			*op;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
@@ -80,4 +82,7 @@ void	error_msg(void);
 void	target_for_a(t_stack *a, t_stack *b);
 void	target_for_b(t_stack *a, t_stack *b);
 void	try(t_stack *a, t_stack *b);
+void	cost_pa(t_stack *a, t_stack *b);
+void	cost_pb(t_stack *a, t_stack *b);
+void	init_index(t_stack *stack);
 #endif

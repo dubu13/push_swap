@@ -6,12 +6,29 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 20:03:13 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/26 22:08:51 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:58:05 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+t_stack	*cheapest(t_stack *stack)
+{
+	t_stack	*temp;
+	t_stack	*cheapest;
+
+	temp = stack;
+	cheapest = stack;
+	while (stack)
+	{
+		if (stack->cost < cheapest->cost)
+			cheapest = stack;
+		stack = stack->next;
+	}
+	return (cheapest);
+
+}
 
 void	try(t_stack *a, t_stack *b)
 {
@@ -19,36 +36,11 @@ void	try(t_stack *a, t_stack *b)
 	pb(&a, &b);
 	ft_print_stack(a);
 	ft_print_stack(b);
+	init_index(a);
+	init_index(b);
 	target_for_a(a, b);
+	cost_pa(a, b);
+	cheapest(a);
 	target_for_b(a, b);
 }
 
-// void	sort_5node(t_stack *a, t_stack *b)
-// {
-// 	int	min_pos;
-// 	int	head_pos;
-// 	int	i;
-
-// 	while (stack_size(a) > 3)
-// 	{
-// 		i = 0;
-// 		head_pos = 1;
-// 		min_pos = find_pos(a, find_min(a));
-// 		if (cost_rev_r(a, min_pos) > cost_rotate(a, min_pos))
-// 			while (head_pos++ != min_pos)
-// 				ra(a, SINGLE_OP);
-// 		else
-// 			while ((min_pos + i++) != stack_size(a) + 1)
-// 				rra(a, SINGLE_OP);
-// 		if (check_sorted(a) && stack_size(b) == 0)
-// 			return ;
-// 		pb(&a, &b);
-// 		ft_print_stack(a);
-// 		ft_print_stack(b);
-// 	}
-// 	sort_3node(a);
-// 	pa(&a, &b);
-// 	pa(&a, &b);
-// 	ft_print_stack(a);
-// 	ft_print_stack(b);
-// }
