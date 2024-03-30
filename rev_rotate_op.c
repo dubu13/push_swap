@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:16:21 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/26 21:51:27 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/30 21:32:47 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	rrb(t_stack *b, int op)
 	}
 	tail->value = tail_value;
 	if (op == SINGLE_OP)
-		ft_printf("rra\n");
+		ft_printf("rrb\n");
 }
 
 void	rrr(t_stack **a, t_stack **b, int op)

@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:48:00 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/28 14:54:30 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/30 22:18:53 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/inc/libft.h"
 # include <limits.h>
+# include <stdbool.h>
 
 # define DOUBLE_OP '0'
 # define SINGLE_OP '1'
@@ -24,7 +25,7 @@ typedef struct s_stack
 	long			value;
 	long			index;
 	long			cost;
-	// char			*op;
+	bool			above_med;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
@@ -52,9 +53,7 @@ void	sa(t_stack *a, int op);
 void	sb(t_stack *b, int op);
 void	ss(t_stack **a, t_stack **b, int op);
 //sort_3.c
-void	sort_3node(t_stack *stack);
-//sort_5.c
-void	sort_5node(t_stack *a, t_stack *b);
+void	sort_3(t_stack *stack);
 
 //find_target.c
 
@@ -65,6 +64,7 @@ t_stack	*find_max(t_stack *stack);
 t_stack	*find_min(t_stack *stack);
 t_stack	*last_node(t_stack *stack);
 t_stack	*create_node(int value);
+t_stack	*set_cheapest(t_stack *a);
 void	append_node(t_stack **stack, int value);
 //stack_utils2.c
 int		cost_rotate(t_stack *stack, int pos);
@@ -81,8 +81,10 @@ void	error_msg(void);
 //
 void	target_for_a(t_stack *a, t_stack *b);
 void	target_for_b(t_stack *a, t_stack *b);
-void	try(t_stack *a, t_stack *b);
+void	sort(t_stack *a, t_stack *b);
 void	cost_pa(t_stack *a, t_stack *b);
 void	cost_pb(t_stack *a, t_stack *b);
 void	init_index(t_stack *stack);
+void	push_to_b(t_stack *a, t_stack *b);
+void	single_r_op(t_stack *a, t_stack *b, t_stack *cheapest);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:20:49 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/26 22:09:37 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/30 22:18:31 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ int	main(int argc, char **argv)
 		if (stack_size(a) == 2)
 			sa(a, SINGLE_OP);
 		else if (stack_size(a) == 3)
-			sort_3node(a);
-		// else if (stack_size(a) == 5)
-		// 	sort_5node(a, b);
+			sort_3(a);
 		else
-			try(a, b);
+			sort(a, b);
 	}
 }

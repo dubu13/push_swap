@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:05:51 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/28 15:03:13 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/30 17:46:17 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	cost_pa(t_stack *a, t_stack *b)
 	while (a)
 	{
 		a->cost = 0;
-		if (a->index <= stack_size(a) / 2)
+		if (a->above_med)
 			a->cost += a->index;
 		else
 			a->cost += stack_size(temp) - a->index;
-		if (a->target->index <= stack_size(b) / 2)
+		if (a->target->above_med)
 			a->cost += a->target->index;
 		else
 			a->cost += stack_size(b) - a->target->index;
@@ -40,11 +40,11 @@ void	cost_pb(t_stack *a, t_stack *b)
 	while (b)
 	{
 		b->cost = 0;
-		if (b->index <= stack_size(b) / 2)
+		if (b->above_med)
 			b->cost += b->index;
 		else
 			b->cost += stack_size(temp) - b->index;
-		if (b->target->index <= stack_size(a) / 2)
+		if (b->target->above_med)
 			b->cost += b->target->index;
 		else
 			b->cost += stack_size(a) - b->target->index;
