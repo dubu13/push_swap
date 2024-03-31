@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:48:00 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/30 22:18:53 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/31 23:09:33 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ t_stack	*parse_args(int argc, char **argv);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **b, t_stack **a);
 //rotate_op.c
-void	ra(t_stack *a, int op);
-void	rb(t_stack *b, int op);
+void	ra(t_stack **a, int op);
+void	rb(t_stack **b, int op);
 void	rr(t_stack **a, t_stack **b, int op);
 //rev_rotate_op.c
-void	rra(t_stack *a, int op);
-void	rrb(t_stack *b, int op);
+void	rra(t_stack **a, int op);
+void	rrb(t_stack **b, int op);
 void	rrr(t_stack **a, t_stack **b, int op);
 //swap_op.c
 void	sa(t_stack *a, int op);
 void	sb(t_stack *b, int op);
 void	ss(t_stack **a, t_stack **b, int op);
 //sort_3.c
-void	sort_3(t_stack *stack);
+void	sort_3(t_stack **stack);
 
 //find_target.c
 
@@ -81,10 +81,11 @@ void	error_msg(void);
 //
 void	target_for_a(t_stack *a, t_stack *b);
 void	target_for_b(t_stack *a, t_stack *b);
-void	sort(t_stack *a, t_stack *b);
+void	sort(t_stack **a, t_stack **b);
 void	cost_pa(t_stack *a, t_stack *b);
 void	cost_pb(t_stack *a, t_stack *b);
 void	init_index(t_stack *stack);
-void	push_to_b(t_stack *a, t_stack *b);
-void	single_r_op(t_stack *a, t_stack *b, t_stack *cheapest);
+void	push_to_b(t_stack **a, t_stack **b);
+void	push_to_a(t_stack **a, t_stack **b);
+void	prep_push(t_stack **a, t_stack **b, t_stack *cheapest, char t_n);
 #endif

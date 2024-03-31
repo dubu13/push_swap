@@ -6,19 +6,18 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:44:24 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/30 22:05:06 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/31 18:26:55 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 t_stack	*set_cheapest(t_stack *stack)
 {
 	t_stack	*cheapest;
 
 	cheapest = stack;
-	while (stack)
+	while (stack != NULL)
 	{
 		if (stack->cost < cheapest->cost)
 			cheapest = stack;

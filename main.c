@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:20:49 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/30 22:18:31 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/03/31 22:31:01 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void	ft_print_stack(t_stack *stack)
 		stack = stack->next;
 	}
 	printf("\n");
+}
+
+void	try(t_stack **b)
+{
+	rrb(b, SINGLE_OP);
+	ft_print_stack(*b);
 }
 
 int	main(int argc, char **argv)
@@ -40,8 +46,17 @@ int	main(int argc, char **argv)
 		if (stack_size(a) == 2)
 			sa(a, SINGLE_OP);
 		else if (stack_size(a) == 3)
-			sort_3(a);
+			sort_3(&a);
 		else
-			sort(a, b);
+			sort(&a, &b);
+		// {
+		// 	while (stack_size(a) > 3)
+		// 		pb(&a, &b);
+		// 	ft_print_stack(a);
+		// 	ft_print_stack(b);
+		// 	try(&b);
+		// 	ft_printf("after try\n");
+		// 	ft_print_stack(b);
+		// }
 	}
 }
