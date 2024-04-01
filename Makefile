@@ -2,9 +2,9 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
-SRCS = 	main.c error.c parse_check.c sort_3.c sort_5.c \
-		push_op.c rev_rotate_op.c rotate_op.c swap_op.c \
-		target.c stack_utils.c stack_utils2.c utils.c
+SRCS = 	cost_target.c error_free.c main.c parse_check.c \
+		rev_rotate_op.c rotate_op.c sorting.c stack_utils.c \
+		swap_push_op.c utils.c
 
 OBJS = $(SRCS:.c=.o)
 

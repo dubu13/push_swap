@@ -6,11 +6,30 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:59:42 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/30 20:52:10 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/01 13:38:32 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	init_index(t_stack *stack)
+{
+	int		index;
+	int		mid_p;
+
+	index = 0;
+	mid_p = stack_size(stack) / 2;
+	while (stack)
+	{
+		stack->index = index;
+		if (stack->index <= mid_p)
+			stack->above_med = true;
+		else
+			stack->above_med = false;
+		stack = stack->next;
+		index++;
+	}
+}
 
 t_stack	*find_max(t_stack *stack)
 {
@@ -53,23 +72,15 @@ t_stack	*last_node(t_stack *stack)
 	return (stack);
 }
 
-t_stack	*create_node(int value)
-{
-	t_stack	*new_node;
-
-	new_node = ft_calloc(1, sizeof(t_stack));
-	if (!new_node)
-		error_msg();
-	new_node->value = value;
-	return (new_node);
-}
-
 void	append_node(t_stack **stack, int value)
 {
 	t_stack		*new;
 	t_stack		*tail;
 
-	new = create_node(value);
+	new = ft_calloc(1, sizeof(t_stack));
+	if (!new)
+		error_msg();
+	new->value = value;
 	if (!(*stack))
 		*stack = new;
 	else

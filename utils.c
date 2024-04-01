@@ -6,38 +6,11 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:59:42 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/11 19:40:36 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/01 13:07:47 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_stack(t_stack *stack)
-{
-	t_stack	*temp;
-
-	if (!stack)
-		return ;
-	while (stack)
-	{
-		temp = stack->next;
-		free (stack);
-		stack = temp;
-	}
-}
-
-void	free_str(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 int	stack_size(t_stack *stack)
 {

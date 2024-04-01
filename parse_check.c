@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:49:14 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/25 19:10:45 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/01 14:57:27 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,40 +51,39 @@ int	check_sorted(t_stack *stack)
 	return (1);
 }
 
-t_stack	*str_case(t_stack *a, int index, char **argv)
+t_stack	*str_case(t_stack *a, int index, char *str)
 {
 	char	**parsed;
 	int		value;
 
-	parsed = ft_split(argv[index], ' ');
-	while (parsed[index - 1])
+	parsed = ft_split(&str[index], ' ');
+	while (parsed[index])
 	{
-		value = ft_atoi2(parsed[index - 1]);
+		value = ft_atoi2(parsed[index]);
 		append_node(&a, value);
 		index++;
 	}
 	free_str(parsed);
-	free(parsed);
 	return (a);
 }
 
 t_stack	*parse_args(int argc, char **argv)
 {
 	t_stack	*a;
-	int		index;
+	int		i;
 	int		value;
 
 	a = NULL;
-	index = 1;
-	while (index < argc)
+	i = 1;
+	if (argc == 2)
+		a = str_case(a, i - 1, argv[1]);
+	else
 	{
-		if (argc == 2)
-			str_case(a, index, argv);
-		else
+		while (i < argc)
 		{
-			value = ft_atoi2(argv[index]);
+			value = ft_atoi2(argv[i]);
 			append_node(&a, value);
-			index++;
+			i++;
 		}
 	}
 	return (a);
