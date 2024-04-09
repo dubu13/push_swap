@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:54:20 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/01 14:12:22 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/09 19:35:55 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_msg(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -38,10 +38,7 @@ void	free_str(char **str)
 
 	i = 0;
 	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
+		free(str[i++]);
 	free(str);
 }
 

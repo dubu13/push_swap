@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:48:00 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/01 13:58:37 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/05 20:28:25 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,11 @@ void				pb(t_stack **a, t_stack **b);
 void				sa(t_stack *stack, int op);
 void				sb(t_stack *stack, int op);
 void				ss(t_stack **a, t_stack **b, int op);
+
+//
+
+
+void	ft_print_stack(t_stack *stack);
+
 
 #endif

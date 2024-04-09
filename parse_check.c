@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:49:14 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/01 14:57:27 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/09 18:33:24 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ t_stack	*parse_args(int argc, char **argv)
 	a = NULL;
 	i = 1;
 	if (argc == 2)
+	{
 		a = str_case(a, i - 1, argv[1]);
+		if (!a)
+			exit(1);
+	}
 	else
 	{
 		while (i < argc)

@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:51:35 by dhasan            #+#    #+#             */
-/*   Updated: 2024/03/31 21:24:59 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/05 13:45:07 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	ra(t_stack **a, int op)
 	tail->next->prev = tail;
 	tail->next->next = NULL;
 	if (op == SINGLE_OP)
+	{
+		// ft_print_stack(*a);
 		ft_printf("ra\n");
+	}
 }
 
 void	rb(t_stack **b, int op)
@@ -41,11 +44,16 @@ void	rb(t_stack **b, int op)
 	tail->next->prev = tail;
 	tail->next->next = NULL;
 	if (op == SINGLE_OP)
+	{
+		// ft_print_stack(*b);
 		ft_printf("rb\n");
+	}
 }
 
 void	rr(t_stack **a, t_stack **b, int op)
 {
 	ra(a, op);
 	rb(b, op);
+	if (op == DOUBLE_OP)
+		ft_printf("rr\n");
 }
