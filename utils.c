@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:59:42 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/09 20:21:02 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/16 10:51:43 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	stack_size(t_stack *stack)
 	return (len);
 }
 
-int	is_digit(const char *str)
+int	is_digit(const char *str, bool *error)
 {
 	int	i;
 
@@ -33,42 +33,42 @@ int	is_digit(const char *str)
 	while (str[i] != '\0')
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			*error = true;
 			return (0);
+		}
 		i++;
 	}
 	return (1);
 }
 
-void	check_negative(const char *str)
+void	check_minus_plus(const char *str, bool *error)
 {
-	if (*str == '-' && (*(++str) == '\0' || !is_digit(++str)))
-		error_msg();
+	if (*str == '-' && (*(str + 1) == '0' || *(str + 1) == '\0'))
+		*error = true;
+	if (*str == '-' && !is_digit(++str, error))
+		*error = true;
 	if (*str == '+')
-		error_msg();
+		*error = true;
 }
 
-
-int	ft_atoi2(const char *str)
+int	ft_atoi2(const char *str, bool *error)
 {
 	int				sign;
 	long long int	num;
 
 	sign = 1;
 	num = 0;
-	while (*str == ' ' || *str == '\t' || *str == '\n'
-		|| *str == '\r' || *str == '\f' || *str == '\v')
-		str++;
-	check_negative(str);
+	check_minus_plus(str, error);
 	if (*str == '-')
 	{
 		sign *= -1;
 		str++;
 	}
-	if (!is_digit(str))
-		error_msg();
+	is_digit(str, error);
 	while (*str >= '0' && *str <= '9')
 		num = (num * 10) + (*str++ - '0');
 	if (num * sign > INT_MAX || num * sign < INT_MIN)
-		error_msg();
+		*error = true;
 	return (num * sign);
 }

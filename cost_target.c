@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:05:51 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/01 13:39:18 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/16 12:16:15 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*set_cheapest(t_stack *stack)
 	return (cheapest);
 }
 
-void	cost_pa(t_stack *a, t_stack *b)
+void	cost_to_pb(t_stack *a, t_stack *b)
 {
 	t_stack	*temp;
 
@@ -34,11 +34,11 @@ void	cost_pa(t_stack *a, t_stack *b)
 	while (a)
 	{
 		a->cost = 0;
-		if (a->above_med)
+		if (a->above_mid)
 			a->cost += a->index;
 		else
 			a->cost += stack_size(temp) - a->index;
-		if (a->target->above_med)
+		if (a->target->above_mid)
 			a->cost += a->target->index;
 		else
 			a->cost += stack_size(b) - a->target->index;
@@ -46,7 +46,7 @@ void	cost_pa(t_stack *a, t_stack *b)
 	}
 }
 
-void	cost_pb(t_stack *a, t_stack *b)
+void	cost_to_pa(t_stack *a, t_stack *b)
 {
 	t_stack	*temp;
 
@@ -54,11 +54,11 @@ void	cost_pb(t_stack *a, t_stack *b)
 	while (b)
 	{
 		b->cost = 0;
-		if (b->above_med)
+		if (b->above_mid)
 			b->cost += b->index;
 		else
 			b->cost += stack_size(temp) - b->index;
-		if (b->target->above_med)
+		if (b->target->above_mid)
 			b->cost += b->target->index;
 		else
 			b->cost += stack_size(a) - b->target->index;
@@ -123,3 +123,13 @@ void	target_for_b(t_stack *a, t_stack *b)
 		b = b->next;
 	}
 }
+// target for a node is the smaller value than a and closest to a value
+// if there no smaller than a, target is the max value in b
+//////////////////////////////////////////////////////////////////////
+// target for b node is the bigger value than b and closest to b value
+// if there no bigger than b, target is the min value in a
+//////////////////////////////////////////////////////////////////////
+// we wanna push the node above the target node
+// cost functions are calculate the how many operations
+// has to be done to put node and the target to top of the stack
+//////////////////////////////////////////////////////////////////////

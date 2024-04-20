@@ -6,42 +6,37 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:49:14 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/09 18:33:24 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/15 20:03:42 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	check_duplicates(t_stack *stack)
 {
 	t_stack	*check;
+	t_stack	*temp;
 
 	if (!stack)
+		free_stack(stack, true);
+	temp = stack;
+	while (temp != NULL)
 	{
-		free_stack(stack);
-		error_msg();
-	}
-	while (stack != NULL)
-	{
-		check = stack->next;
+		check = temp->next;
 		while (check != NULL)
 		{
-			if (stack->value == check->value)
-			{
-				free_stack(stack);
-				error_msg();
-			}
+			if (temp->value == check->value)
+				free_stack(stack, true);
 			check = check->next;
 		}
-		stack = stack->next;
+		temp = temp->next;
 	}
 }
 
 int	check_sorted(t_stack *stack)
 {
 	if (!stack)
-		error_msg();
+		free_stack(stack, true);
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
@@ -51,44 +46,30 @@ int	check_sorted(t_stack *stack)
 	return (1);
 }
 
-t_stack	*str_case(t_stack *a, int index, char *str)
-{
-	char	**parsed;
-	int		value;
-
-	parsed = ft_split(&str[index], ' ');
-	while (parsed[index])
-	{
-		value = ft_atoi2(parsed[index]);
-		append_node(&a, value);
-		index++;
-	}
-	free_str(parsed);
-	return (a);
-}
-
-t_stack	*parse_args(int argc, char **argv)
+t_stack	*parse_args(int argc, char **argv, bool *error)
 {
 	t_stack	*a;
+	char	**parsed;
 	int		i;
-	int		value;
+	int		j;
 
 	a = NULL;
 	i = 1;
-	if (argc == 2)
+	while (i < argc)
 	{
-		a = str_case(a, i - 1, argv[1]);
-		if (!a)
-			exit(1);
-	}
-	else
-	{
-		while (i < argc)
+		parsed = ft_split(argv[i], ' ');
+		if (!*parsed)
+			*error = true;
+		j = 0;
+		while (parsed[j])
 		{
-			value = ft_atoi2(argv[i]);
-			append_node(&a, value);
-			i++;
+			append_node(&a, ft_atoi2(parsed[j], error));
+			j++;
 		}
+		free_str(parsed);
+		i++;
 	}
+	if (*error)
+		free_stack(a, true);
 	return (a);
 }

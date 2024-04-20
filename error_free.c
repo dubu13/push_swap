@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:54:20 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/09 19:35:55 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/16 13:18:06 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ void	error_msg(void)
 	exit(1);
 }
 
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack *stack, bool error)
 {
 	t_stack	*temp;
 
-	if (!stack)
-		return ;
-	while (stack)
+	if (stack)
 	{
-		temp = stack->next;
-		free (stack);
-		stack = temp;
+		while (stack)
+		{
+			temp = stack->next;
+			free (stack);
+			stack = temp;
+		}
 	}
+	if (error)
+		error_msg();
 }
 
 void	free_str(char **str)
@@ -41,4 +44,3 @@ void	free_str(char **str)
 		free(str[i++]);
 	free(str);
 }
-

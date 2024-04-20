@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:59:42 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/01 13:38:32 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/16 11:49:10 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_index(t_stack *stack)
 	{
 		stack->index = index;
 		if (stack->index <= mid_p)
-			stack->above_med = true;
+			stack->above_mid = true;
 		else
-			stack->above_med = false;
+			stack->above_mid = false;
 		stack = stack->next;
 		index++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:48:00 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/05 20:28:25 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/17 15:04:08 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stack
 	long			value;
 	long			index;
 	long			cost;
-	bool			above_med;
+	bool			above_mid;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
@@ -33,15 +33,15 @@ typedef struct s_stack
 
 //error_free.c
 void				error_msg(void);
-void				free_stack(t_stack *stack);
+void				free_stack(t_stack *stack, bool error);
 void				free_str(char **str);
 //check_args.c
-t_stack				*parse_args(int argc, char **argv);
+t_stack				*parse_args(int argc, char **argv, bool *error);
 int					check_sorted(t_stack *stack);
 void				check_duplicates(t_stack *stack);
 //utils.c
 int					stack_size(t_stack *stack);
-int					ft_atoi2(const char *str);
+int					ft_atoi2(const char *str, bool *error);
 //stack_utils.c
 void				init_index(t_stack *stack);
 t_stack				*find_max(t_stack *stack);
@@ -50,8 +50,8 @@ t_stack				*last_node(t_stack *stack);
 void				append_node(t_stack **stack, int value);
 //cost_target.c
 t_stack				*set_cheapest(t_stack *stack);
-void				cost_pa(t_stack *a, t_stack *b);
-void				cost_pb(t_stack *a, t_stack *b);
+void				cost_to_pb(t_stack *a, t_stack *b);
+void				cost_to_pa(t_stack *a, t_stack *b);
 void				target_for_a(t_stack *a, t_stack *b);
 void				target_for_b(t_stack *a, t_stack *b);
 //sorting.c
@@ -74,11 +74,5 @@ void				pb(t_stack **a, t_stack **b);
 void				sa(t_stack *stack, int op);
 void				sb(t_stack *stack, int op);
 void				ss(t_stack **a, t_stack **b, int op);
-
-//
-
-
-void	ft_print_stack(t_stack *stack);
-
 
 #endif

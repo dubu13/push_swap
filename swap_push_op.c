@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:34:43 by dhasan            #+#    #+#             */
-/*   Updated: 2024/04/05 13:43:32 by dhasan           ###   ########.fr       */
+/*   Updated: 2024/04/15 19:57:47 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	pa(t_stack **a, t_stack **b)
 	if (*a)
 		(*a)->prev = new_head;
 	*a = new_head;
-	// ft_print_stack(*a);
-	// ft_print_stack(*b);
 	ft_printf("pa\n");
 }
 
@@ -45,8 +43,6 @@ void	pb(t_stack **a, t_stack **b)
 	if (*b)
 		(*b)->prev = new_head;
 	*b = new_head;
-	// ft_print_stack(*a);
-	// ft_print_stack(*b);
 	ft_printf("pb\n");
 }
 
@@ -62,7 +58,6 @@ void	sa(t_stack *a, int op)
 	a->next->value = head_value;
 	a->value = second_value;
 	if (op == SINGLE_OP)
-		// ft_print_stack(a);
 		ft_printf("sa\n");
 }
 
@@ -78,10 +73,7 @@ void	sb(t_stack *b, int op)
 	b->next->value = head_value;
 	b->value = second_value;
 	if (op == SINGLE_OP)
-	{
-		// ft_print_stack(b);
 		ft_printf("sb\n");
-	}
 }
 
 void	ss(t_stack **a, t_stack **b, int op)
